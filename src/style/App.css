@@ -1,0 +1,25 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+.bar {
+  width: 50px;
+  /* height: 100px; */
+  background: rgba(225, 0, 120, 0.6);
+  margin: 0 2px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+  transform-origin: bottom center;
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  padding: 1rem 0;
+  transition: all 250ms ease;
+}

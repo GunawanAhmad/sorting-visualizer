@@ -1,0 +1,22 @@
+.array-list {
+  display: flex;
+  margin-top: 50px;
+  /* justify-content: center; */
+  align-items: flex-end;
+  position: relative;
+  /* border: 1px solid red; */
+  height: 70vh;
+  margin: auto;
+  /* overflow-x: hidden; */
+}
+
+.bars-container {
+  position: absolute;
+  left: 50%;
+
+  margin: auto;
+
+  display: flex;
+
+  align-items: flex-end;
+}
