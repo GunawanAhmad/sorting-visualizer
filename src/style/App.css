@@ -10,7 +10,7 @@
 .bar {
   width: 50px;
   /* height: 100px; */
-  background: rgba(225, 0, 120, 0.6);
+  background: #e76f51;
   margin: 0 2px;
   display: flex;
   align-items: flex-end;
