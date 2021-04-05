@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <button @click="getRandomArray">Get random array</button>
-    <button @click="runSelectionSort">Selection Sort</button>
     <div class="array-list">
       <div class="bars-container" ref="barContainer"></div>
     </div>
@@ -15,6 +13,14 @@ export default {
     this.getRandomArray();
     let bars = document.querySelectorAll(".bar");
     this.arrFromNodeList = Array.from(bars);
+    this.eventHub.$on("visualize", (data) => {
+      console.log(data);
+      this.runSelectionSort();
+    });
+    this.eventHub.$on("randomize", (data) => {
+      console.log(data);
+      this.getRandomArray();
+    });
   },
   data() {
     return {

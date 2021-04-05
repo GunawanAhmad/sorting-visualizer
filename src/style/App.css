@@ -1,16 +1,36 @@
+:root {
+  --dark: #36393e;
+  --orange: #da7f4b;
+  --blue: #00adb5;
+  --soft-dark: #4f5153;
+  --white: #eeeeee;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--dark);
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 
 .bar {
   width: 50px;
   /* height: 100px; */
-  background: #e76f51;
+  background: var(--orange);
   margin: 0 2px;
   display: flex;
   align-items: flex-end;
@@ -22,4 +42,5 @@
   margin: auto;
   padding: 1rem 0;
   transition: all 250ms ease;
+  font-size: 1.8rem;
 }

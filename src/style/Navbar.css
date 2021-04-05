@@ -1,0 +1,84 @@
+.navbar {
+  max-width: 1444px;
+  background-color: var(--soft-dark);
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar > * {
+  margin-right: 2rem;
+}
+
+.navbar > *:last-child {
+  margin-right: 0;
+}
+
+.visualize-btn {
+  background: var(--blue) !important;
+  color: var(--white) !important;
+}
+
+.randomize-btn {
+  background: var(--orange) !important;
+  color: var(--white) !important;
+}
+
+.select {
+  color: var(--dark);
+  position: relative;
+  cursor: pointer;
+  background: var(--white);
+  border-radius: 5px;
+}
+
+.ul-list {
+  position: absolute;
+  left: 0;
+  list-style: none;
+  /* padding: 1rem 0; */
+  background: var(--white);
+  color: var(--dark);
+  min-width: 100%;
+  font-size: 1.8rem;
+  top: 120%;
+  border-radius: 5px;
+  text-align: left;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.ul-list li {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--dark);
+}
+
+.ul-list li:hover {
+  background: var(--soft-dark);
+  color: var(--white);
+}
+
+.ul-list li:last-of-type {
+  border-bottom: none;
+}
+
+.select .box {
+  display: flex;
+  align-items: center;
+}
+
+.select .box .icon {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.btn-style {
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
