@@ -1,0 +1,47 @@
+.pseudo-code-container {
+  width: 30%;
+  /* max-height: 200px; */
+  /* border: 1px solid red; */
+  color: var(--white);
+  font-size: 1.6rem !important;
+  text-align: left;
+}
+
+.pseudo-code-container .checking {
+  height: auto;
+  background: var(--soft-dark);
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  /* text-align: center; */
+  padding: 2rem 1rem;
+}
+
+.pseudo-code-container .pseudo-code {
+  background: var(--soft-dark);
+  height: auto;
+  border-radius: 5px;
+  padding: 2rem 1rem;
+}
+
+.pseudo-code-container .pseudo-code > p {
+  padding: 0.5rem 0;
+}
+
+.indent-0 {
+  padding-left: 0 !important;
+}
+
+.indent-1 {
+  padding-left: 2rem !important;
+}
+
+.indent-2 {
+  padding-left: 4rem !important;
+}
+.indent-3 {
+  padding-left: 6rem !important;
+}
+
+.pseudo-code-container .pseudo-code p.active {
+  background-color: var(--blue);
+}

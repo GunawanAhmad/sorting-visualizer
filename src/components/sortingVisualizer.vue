@@ -1,16 +1,31 @@
 <template>
   <div class="container">
-    <div class="array-list">
-      <div class="bars-container" ref="barContainer"></div>
+    <div class="algo-info">
+      <div class="icon">
+        <i class="fas fa-question"></i>
+      </div>
+      <div class="text">
+        <p>Algoritma Selection sort adalah algoritma yang paling sederhana.</p>
+      </div>
+    </div>
+    <div class="visualization">
+      <selection-sort-pseudo />
+      <div class="array-list">
+        <div class="bars-container" ref="barContainer"></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { visualizeSelectionSort } from "../algorithms/selectionSort/visualizeSelectionSort";
+import SelectionSortPseudo from "./selectionSortPseudo.vue";
+
 export default {
+  components: { SelectionSortPseudo },
   mounted() {
     this.getRandomArray();
+
     let bars = document.querySelectorAll(".bar");
     this.arrFromNodeList = Array.from(bars);
     this.eventHub.$on("visualize", (data) => {
@@ -21,19 +36,21 @@ export default {
       console.log(data);
       this.getRandomArray();
     });
+    this.pseudoSections = document.querySelectorAll(".pseudo-code-container p");
   },
   data() {
     return {
       array: [],
       arrFromNodeList: [],
-      animationTime: 100,
+      animationTime: 200,
+      pseudoSections: null,
     };
   },
   methods: {
     getRandomArray() {
       this.array = [];
       this.$refs.barContainer.innerHTML = "";
-      const maxLength = 10;
+      const maxLength = 13;
       const minLength = 8;
       const maxValue = 40;
       const minValue = 2;
@@ -58,14 +75,15 @@ export default {
       this.arrFromNodeList = Array.from(bars);
       for (let i = 0; i < this.array.length; i++) {
         bars[i].style.transform = `translate( ${i * 130}%, 0%)`;
-        this.$refs.barContainer.style.transform = `translateX( -${i * 30}px )`;
+        this.$refs.barContainer.style.transform = `translateX( -${i * 35}px )`;
       }
     },
     runSelectionSort() {
       visualizeSelectionSort(
         this.array,
         this.animationTime,
-        this.arrFromNodeList
+        this.arrFromNodeList,
+        this.pseudoSections
       );
     },
   },

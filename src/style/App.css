@@ -6,10 +6,30 @@
   --white: #eeeeee;
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--soft-dark);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--dark);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark);
+}
+
 * {
   margin: 0;
   padding: 0;
   /* box-sizing: border-box; */
+  font-family: "Poppins", sans-serif;
 }
 
 html {
@@ -18,6 +38,7 @@ html {
 
 body {
   background-color: var(--dark);
+  overflow-y: scroll;
 }
 
 #app {
@@ -43,4 +64,5 @@ body {
   padding: 1rem 0;
   transition: all 250ms ease;
   font-size: 1.8rem;
+  border-radius: 5px;
 }

@@ -27,9 +27,9 @@
         </div>
       </div>
       <ul class="ul-list" v-if="isShowingSpeedList">
-        <li @click="changeSelectedSpeed('Slow')">Slow</li>
-        <li @click="changeSelectedSpeed('Medium')">Medium</li>
-        <li @click="changeSelectedSpeed('Fast')">Fast</li>
+        <li @click="changeSelectedSpeed('Lambat')">Lambat</li>
+        <li @click="changeSelectedSpeed('Sedang')">Sedang</li>
+        <li @click="changeSelectedSpeed('Cepat')">Cepat</li>
       </ul>
     </div>
   </nav>

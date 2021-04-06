@@ -4,25 +4,37 @@ export function selectionSort(array) {
   for (let i = 0; i < n; i++) {
     // Finding the smallest number in the subarray
     let min = i;
-
+    compareAnim.push(
+      createComparingObject(i, i, min, false, false, -1, true, false, false)
+    );
     for (let j = i + 1; j < n; j++) {
-      compareAnim.push(createComparingObject(i, j, min, false, false, -1));
-
+      compareAnim.push(
+        createComparingObject(i, j, min, false, false, -1, false, false, false)
+      );
       if (array[j] < array[min]) {
         min = j;
-        compareAnim.push(createComparingObject(i, j, min, false, false, -1));
+        compareAnim.push(
+          createComparingObject(i, j, min, false, false, -1, false, true, false)
+        );
       }
     }
 
+    compareAnim.push(
+      createComparingObject(i, i, i, false, false, i, false, false, true)
+    );
     if (min != i) {
       // Swapping the elements
-      // [array[i], array[min]] = [array[min], array[i]];
+      // [array[i], array[min]] = [array[min], array[i]];  alternative
       let tmp = array[i];
       array[i] = array[min];
       array[min] = tmp;
-      compareAnim.push(createComparingObject(min, i, min, true, false, -1));
+      compareAnim.push(
+        createComparingObject(min, i, min, true, false, -1, false, false, false)
+      );
     }
-    compareAnim.push(createComparingObject(i, i, i, false, true, i));
+    compareAnim.push(
+      createComparingObject(i, i, i, false, true, i, false, false, false)
+    );
   }
 
   return compareAnim;
@@ -34,7 +46,10 @@ function createComparingObject(
   minIndex,
   isSwap,
   isFinalElm,
-  finalElm
+  finalElm,
+  isOutJLoop,
+  isChangeMin,
+  isCompareIandMin
 ) {
   return {
     currElm,
@@ -43,5 +58,8 @@ function createComparingObject(
     isSwap,
     isFinalElm,
     finalElm,
+    isOutJLoop,
+    isChangeMin,
+    isCompareIandMin,
   };
 }
