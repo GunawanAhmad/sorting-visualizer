@@ -20,17 +20,17 @@ export function selectionSort(array) {
     }
 
     compareAnim.push(
-      createComparingObject(i, i, i, false, false, i, false, false, true)
+      createComparingObject(i, i, min, false, false, i, false, false, true)
     );
     if (min != i) {
       // Swapping the elements
+      compareAnim.push(
+        createComparingObject(min, i, min, true, false, -1, false, false, false)
+      );
       // [array[i], array[min]] = [array[min], array[i]];  alternative
       let tmp = array[i];
       array[i] = array[min];
       array[min] = tmp;
-      compareAnim.push(
-        createComparingObject(min, i, min, true, false, -1, false, false, false)
-      );
     }
     compareAnim.push(
       createComparingObject(i, i, i, false, true, i, false, false, false)

@@ -10,16 +10,17 @@ export function visualizeSelectionSort(
   let sortedArr = selectionSort(array);
   let currElmColor = "#264653";
   let compareElmColor = "#e9c46a";
-  let minElmCOlor = "#9e2a2b";
+  let minElmColor = "#9e2a2b";
   let sortedColor = "#2a9d8f";
   let unsortedColor = "#e76f51";
   pseudoSections[0].classList.add("active");
   for (let i = 0; i < sortedArr.length; i++) {
     setTimeout(() => {
       visualizePseudo(sortedArr[i], pseudoSections);
+      checkPseudoAnim(sortedArr[i], arrFromNodeList, arrFromNodeList);
       changeBackgroundColor(
         sortedArr[i].minIndex,
-        minElmCOlor,
+        minElmColor,
         arrFromNodeList
       );
       changeBackgroundColor(
@@ -92,7 +93,7 @@ function visualizePseudo(data, pseudoSections) {
   pseudoSections[1].classList.add("active");
   if (data.isOutJLoop) {
     removePreviousActivePseudo();
-    pseudoSections[2].classList.add("active");
+    pseudoSections[1].classList.add("active");
   } else {
     removePreviousActivePseudo();
     pseudoSections[3].classList.add("active");
@@ -112,5 +113,46 @@ function visualizePseudo(data, pseudoSections) {
   if (data.isFinalElm) {
     removePreviousActivePseudo();
     pseudoSections[1].classList.add("active");
+  }
+}
+
+function checkPseudoAnim(data, arrFromNodeList) {
+  const pseudoCheckingElm = document.querySelector(
+    ".pseudo-code-container .checking"
+  );
+  if (data.isFinalElm) {
+    return;
+  }
+  if (!data.isOutJLoop) {
+    pseudoCheckingElm.textContent = `Cek apakah nilai ${
+      arrFromNodeList[data.compareElm].textContent
+    } lebih kecil dari minimum (${arrFromNodeList[data.minIndex].textContent})`;
+  }
+  if (data.isChangeMin || data.isOutJLoop) {
+    pseudoCheckingElm.textContent = `set nilai ${
+      arrFromNodeList[data.minIndex].textContent
+    } sebagai nilai minimum`;
+  }
+  // if (data.isFinalElm) {
+  //   pseudoCheckingElm.textContent = `set nilai ${
+  //     arrFromNodeList[data.minIndex + 1].textContent
+  //   } sebagai nilai minimum`;
+  // }
+  // if (data.isOutJLoop) {
+  //   console.log("hai");
+  //   pseudoCheckingElm.textContent = `set nilai ${
+  //     arrFromNodeList[data.minIndex].textContent
+  //   } sebagai nilai minimum`;
+  // }
+
+  if (data.isSwap) {
+    pseudoCheckingElm.textContent = `tukar nilai ${
+      arrFromNodeList[data.compareElm].textContent
+    } dan ${arrFromNodeList[data.minIndex].textContent}`;
+  }
+  if (data.isCompareIandMin) {
+    pseudoCheckingElm.textContent = `cek apakah nilai ${
+      arrFromNodeList[data.compareElm].textContent
+    } dan ${arrFromNodeList[data.minIndex].textContent} berbeda`;
   }
 }
