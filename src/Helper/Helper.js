@@ -69,3 +69,10 @@ function swapArrElm(arr, indexA, indexB) {
   arr[indexA] = arr[indexB];
   arr[indexB] = temp;
 }
+
+export function disableButton(value) {
+  let buttons = document.querySelectorAll(".navbar button");
+  buttons.forEach((btn) => {
+    btn.disabled = value;
+  });
+}

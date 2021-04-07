@@ -1,13 +1,6 @@
 <template>
   <div class="container">
-    <div class="algo-info">
-      <div class="icon">
-        <i class="fas fa-question"></i>
-      </div>
-      <div class="text">
-        <p>Algoritma Selection sort adalah algoritma yang paling sederhana.</p>
-      </div>
-    </div>
+    <algo-info />
     <div class="visualization">
       <selection-sort-pseudo />
       <div class="array-list">
@@ -20,16 +13,17 @@
 <script>
 import { visualizeSelectionSort } from "../algorithms/selectionSort/visualizeSelectionSort";
 import SelectionSortPseudo from "./selectionSortPseudo.vue";
+import AlgoInfo from "../components/AlgoInfo.vue";
 
 export default {
-  components: { SelectionSortPseudo },
+  components: { SelectionSortPseudo, AlgoInfo },
   mounted() {
     this.getRandomArray();
-
     let bars = document.querySelectorAll(".bar");
     this.arrFromNodeList = Array.from(bars);
     this.eventHub.$on("visualize", (data) => {
-      console.log(data);
+      this.isShowAlgoInfo = true;
+      this.checkSelectedAlgoAndSpeed(data);
       this.runSelectionSort();
     });
     this.eventHub.$on("randomize", (data) => {
@@ -44,13 +38,15 @@ export default {
       arrFromNodeList: [],
       animationTime: 200,
       pseudoSections: null,
+      selectedAlgorithm: "",
+      isShowAlgoInfo: false,
     };
   },
   methods: {
     getRandomArray() {
       this.array = [];
       this.$refs.barContainer.innerHTML = "";
-      const maxLength = 13;
+      const maxLength = 12;
       const minLength = 8;
       const maxValue = 40;
       const minValue = 2;
@@ -85,6 +81,19 @@ export default {
         this.arrFromNodeList,
         this.pseudoSections
       );
+    },
+    checkSelectedAlgoAndSpeed(data) {
+      if (data.selectedAlgorithm == "selection") {
+        this.selectedAlgorithm = "selection";
+      }
+
+      if (data.selectedSpeed == "Lambat") {
+        this.animationTime = 800;
+      } else if (data.selectedSpeed == "Sedang") {
+        this.animationTime = 500;
+      } else if (data.selectedSpeed == "Cepat") {
+        this.animationTime = 200;
+      }
     },
   },
 };

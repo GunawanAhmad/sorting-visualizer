@@ -13,10 +13,10 @@
       </ul>
     </div>
     <button class="btn-style visualize-btn" @click="Visualize">
-      Visualize
+      Visualisasi
     </button>
     <button class="btn-style randomize-btn" @click="randomizeArray">
-      Get Random Array
+      Buat Array Baru
     </button>
 
     <div class="select-speed select">
@@ -41,7 +41,7 @@ export default {
     return {
       selectedAlgorithm: "Selection",
       isShowingAlgoList: false,
-      selectedSpeed: "Medium",
+      selectedSpeed: "Cepat",
       isShowingSpeedList: false,
     };
   },

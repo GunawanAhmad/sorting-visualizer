@@ -1,5 +1,9 @@
 import { selectionSort } from "./selectionSort";
-import { changeBackgroundColor, swapBars } from "../../Helper/Helper";
+import {
+  changeBackgroundColor,
+  swapBars,
+  disableButton,
+} from "../../Helper/Helper";
 
 export function visualizeSelectionSort(
   array,
@@ -15,7 +19,11 @@ export function visualizeSelectionSort(
   let unsortedColor = "#e76f51";
   pseudoSections[0].classList.add("active");
   for (let i = 0; i < sortedArr.length; i++) {
+    disableButton(true);
     setTimeout(() => {
+      if (i === sortedArr.length - 1) {
+        disableButton(false);
+      }
       visualizePseudo(sortedArr[i], pseudoSections);
       checkPseudoAnim(sortedArr[i], arrFromNodeList, arrFromNodeList);
       changeBackgroundColor(
