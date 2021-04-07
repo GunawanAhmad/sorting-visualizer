@@ -12,6 +12,7 @@
 
 <script>
 import { visualizeSelectionSort } from "../algorithms/selectionSort/visualizeSelectionSort";
+import { visualizeInsertionSort } from "../algorithms/insertionSort/visualizeInsertionSort";
 import SelectionSortPseudo from "./selectionSortPseudo.vue";
 import AlgoInfo from "../components/AlgoInfo.vue";
 
@@ -24,7 +25,11 @@ export default {
     this.eventHub.$on("visualize", (data) => {
       this.isShowAlgoInfo = true;
       this.checkSelectedAlgoAndSpeed(data);
-      this.runSelectionSort();
+      if (this.selectedAlgorithm.toLowerCase() == "selection") {
+        this.runSelectionSort();
+      } else if (this.selectedAlgorithm.toLowerCase() == "insertion") {
+        this.runInsertionSort();
+      }
     });
     this.eventHub.$on("randomize", (data) => {
       console.log(data);
@@ -82,9 +87,18 @@ export default {
         this.pseudoSections
       );
     },
+    runInsertionSort() {
+      visualizeInsertionSort(
+        this.array,
+        this.animationTime,
+        this.arrFromNodeList
+      );
+    },
     checkSelectedAlgoAndSpeed(data) {
-      if (data.selectedAlgorithm == "selection") {
+      if (data.selectedAlgorithm.toLowerCase() == "selection") {
         this.selectedAlgorithm = "selection";
+      } else if (data.selectedAlgorithm.toLowerCase() == "insertion") {
+        this.selectedAlgorithm = "insertion";
       }
 
       if (data.selectedSpeed == "Lambat") {

@@ -16,7 +16,7 @@ export function visualizeSelectionSort(
   let compareElmColor = "#e9c46a";
   let minElmColor = "#9e2a2b";
   let sortedColor = "#2a9d8f";
-  let unsortedColor = "#e76f51";
+  let unsortedColor = "#da7f4b";
   pseudoSections[0].classList.add("active");
   for (let i = 0; i < sortedArr.length; i++) {
     disableButton(true);

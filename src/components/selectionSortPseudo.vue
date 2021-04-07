@@ -1,6 +1,6 @@
 <template>
   <div class="pseudo-code-container">
-    <div class="checking">Selection Sort</div>
+    <div class="checking">Let's Go !</div>
     <div class="pseudo-code">
       <p class="indent-0 active">untuk setiap elemen i dalam array lakukan</p>
       <p class="indent-1">set nilai i sebagai minimum</p>
