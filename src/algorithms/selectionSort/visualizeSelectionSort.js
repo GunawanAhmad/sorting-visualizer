@@ -85,6 +85,13 @@ export function visualizeSelectionSort(
           arrFromNodeList
         );
       }
+      if (i === sortedArr.length - 1) {
+        removePreviousActivePseudo();
+        const pseudoCheckingElm = document.querySelector(
+          ".pseudo-code-container .checking"
+        );
+        pseudoCheckingElm.textContent = "Let's Go";
+      }
     }, (i + 1) * animationTime);
   }
 }
@@ -141,17 +148,6 @@ function checkPseudoAnim(data, arrFromNodeList) {
       arrFromNodeList[data.minIndex].textContent
     } sebagai nilai minimum`;
   }
-  // if (data.isFinalElm) {
-  //   pseudoCheckingElm.textContent = `set nilai ${
-  //     arrFromNodeList[data.minIndex + 1].textContent
-  //   } sebagai nilai minimum`;
-  // }
-  // if (data.isOutJLoop) {
-  //   console.log("hai");
-  //   pseudoCheckingElm.textContent = `set nilai ${
-  //     arrFromNodeList[data.minIndex].textContent
-  //   } sebagai nilai minimum`;
-  // }
 
   if (data.isSwap) {
     pseudoCheckingElm.textContent = `tukar nilai ${

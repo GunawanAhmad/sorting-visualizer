@@ -2,7 +2,8 @@
   <div class="container">
     <algo-info />
     <div class="visualization">
-      <selection-sort-pseudo />
+      <selection-sort-pseudo v-if="selectedAlgorithm == 'selection'" />
+      <insertion-sort-pseudo v-if="selectedAlgorithm == 'insertion'" />
       <div class="array-list">
         <div class="bars-container" ref="barContainer"></div>
       </div>
@@ -15,9 +16,10 @@ import { visualizeSelectionSort } from "../algorithms/selectionSort/visualizeSel
 import { visualizeInsertionSort } from "../algorithms/insertionSort/visualizeInsertionSort";
 import SelectionSortPseudo from "./selectionSortPseudo.vue";
 import AlgoInfo from "../components/AlgoInfo.vue";
+import InsertionSortPseudo from "./insertionSortPseudo.vue";
 
 export default {
-  components: { SelectionSortPseudo, AlgoInfo },
+  components: { SelectionSortPseudo, AlgoInfo, InsertionSortPseudo },
   mounted() {
     this.getRandomArray();
     let bars = document.querySelectorAll(".bar");
@@ -25,15 +27,17 @@ export default {
     this.eventHub.$on("visualize", (data) => {
       this.isShowAlgoInfo = true;
       this.checkSelectedAlgoAndSpeed(data);
-      if (this.selectedAlgorithm.toLowerCase() == "selection") {
-        this.runSelectionSort();
-      } else if (this.selectedAlgorithm.toLowerCase() == "insertion") {
-        this.runInsertionSort();
-      }
+      this.visualizeSortingAlgo();
     });
     this.eventHub.$on("randomize", (data) => {
       console.log(data);
       this.getRandomArray();
+    });
+    this.eventHub.$on("changeAlgo", (data) => {
+      this.selectedAlgorithm = data;
+      this.pseudoSections = document.querySelectorAll(
+        ".pseudo-code-container p"
+      );
     });
     this.pseudoSections = document.querySelectorAll(".pseudo-code-container p");
   },
@@ -43,7 +47,7 @@ export default {
       arrFromNodeList: [],
       animationTime: 200,
       pseudoSections: null,
-      selectedAlgorithm: "",
+      selectedAlgorithm: "selection",
       isShowAlgoInfo: false,
     };
   },
@@ -79,7 +83,18 @@ export default {
         this.$refs.barContainer.style.transform = `translateX( -${i * 35}px )`;
       }
     },
+    visualizeSortingAlgo() {
+      if (this.selectedAlgorithm.toLowerCase() == "selection") {
+        this.runSelectionSort();
+      } else if (this.selectedAlgorithm.toLowerCase() == "insertion") {
+        this.runInsertionSort();
+      }
+    },
     runSelectionSort() {
+      this.pseudoSections = document.querySelectorAll(
+        ".pseudo-code-container p"
+      );
+
       visualizeSelectionSort(
         this.array,
         this.animationTime,
@@ -88,10 +103,15 @@ export default {
       );
     },
     runInsertionSort() {
+      this.pseudoSections = document.querySelectorAll(
+        ".pseudo-code-container p"
+      );
+
       visualizeInsertionSort(
         this.array,
         this.animationTime,
-        this.arrFromNodeList
+        this.arrFromNodeList,
+        this.pseudoSections
       );
     },
     checkSelectedAlgoAndSpeed(data) {
@@ -102,7 +122,7 @@ export default {
       }
 
       if (data.selectedSpeed == "Lambat") {
-        this.animationTime = 800;
+        this.animationTime = 1000;
       } else if (data.selectedSpeed == "Sedang") {
         this.animationTime = 500;
       } else if (data.selectedSpeed == "Cepat") {

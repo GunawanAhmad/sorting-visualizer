@@ -54,6 +54,7 @@ export default {
     changeSelectedAlgo(val) {
       this.selectedAlgorithm = val;
       this.isShowingAlgoList = false;
+      this.eventHub.$emit("changeAlgo", val.toLowerCase());
     },
     openAlgoList() {
       this.isShowingAlgoList = !this.isShowingAlgoList;
