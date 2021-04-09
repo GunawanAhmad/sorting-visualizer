@@ -10,6 +10,7 @@
       <ul class="ul-list" v-if="isShowingAlgoList">
         <li @click="changeSelectedAlgo('Selection')">Selection Sort</li>
         <li @click="changeSelectedAlgo('Insertion')">Insertion Sort</li>
+        <li @click="changeSelectedAlgo('Bubble')">Bubble Sort</li>
       </ul>
     </div>
     <button class="btn-style visualize-btn" @click="Visualize">

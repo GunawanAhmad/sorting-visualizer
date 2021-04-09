@@ -14,6 +14,7 @@
 <script>
 import { visualizeSelectionSort } from "../algorithms/selectionSort/visualizeSelectionSort";
 import { visualizeInsertionSort } from "../algorithms/insertionSort/visualizeInsertionSort";
+import { visualizeBubbleSort } from "../algorithms/bubbleSort/visualizeBubbleSort";
 import SelectionSortPseudo from "./selectionSortPseudo.vue";
 import AlgoInfo from "../components/AlgoInfo.vue";
 import InsertionSortPseudo from "./insertionSortPseudo.vue";
@@ -88,7 +89,15 @@ export default {
         this.runSelectionSort();
       } else if (this.selectedAlgorithm.toLowerCase() == "insertion") {
         this.runInsertionSort();
+      } else if (this.selectedAlgorithm.toLowerCase() == "bubble") {
+        this.runBubbleSort();
       }
+    },
+    runBubbleSort() {
+      this.pseudoSections = document.querySelectorAll(
+        ".pseudo-code-container p"
+      );
+      visualizeBubbleSort(this.array, this.animationTime, this.arrFromNodeList);
     },
     runSelectionSort() {
       this.pseudoSections = document.querySelectorAll(
@@ -119,6 +128,8 @@ export default {
         this.selectedAlgorithm = "selection";
       } else if (data.selectedAlgorithm.toLowerCase() == "insertion") {
         this.selectedAlgorithm = "insertion";
+      } else if (data.selectedAlgorithm.toLowerCase() == "bubble") {
+        this.selectedAlgorithm = "bubble";
       }
 
       if (data.selectedSpeed == "Lambat") {
