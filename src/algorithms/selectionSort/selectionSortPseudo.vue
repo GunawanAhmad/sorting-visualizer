@@ -19,4 +19,4 @@
 export default {};
 </script>
 
-<style scoped src="../style/pseudoCode.css"></style>
+<style scoped src="../../style/pseudoCode.css"></style>

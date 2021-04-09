@@ -4,6 +4,7 @@
     <div class="visualization">
       <selection-sort-pseudo v-if="selectedAlgorithm == 'selection'" />
       <insertion-sort-pseudo v-if="selectedAlgorithm == 'insertion'" />
+      <bubble-sort-pseudo v-if="selectedAlgorithm == 'bubble'" />
       <div class="array-list">
         <div class="bars-container" ref="barContainer"></div>
       </div>
@@ -15,12 +16,18 @@
 import { visualizeSelectionSort } from "../algorithms/selectionSort/visualizeSelectionSort";
 import { visualizeInsertionSort } from "../algorithms/insertionSort/visualizeInsertionSort";
 import { visualizeBubbleSort } from "../algorithms/bubbleSort/visualizeBubbleSort";
-import SelectionSortPseudo from "./selectionSortPseudo.vue";
+import SelectionSortPseudo from "../algorithms/selectionSort/selectionSortPseudo";
 import AlgoInfo from "../components/AlgoInfo.vue";
-import InsertionSortPseudo from "./insertionSortPseudo.vue";
+import InsertionSortPseudo from "../algorithms/insertionSort/insertionSortPseudo";
+import BubbleSortPseudo from "../algorithms/bubbleSort/bubbleSortPseudo.vue";
 
 export default {
-  components: { SelectionSortPseudo, AlgoInfo, InsertionSortPseudo },
+  components: {
+    SelectionSortPseudo,
+    AlgoInfo,
+    InsertionSortPseudo,
+    BubbleSortPseudo,
+  },
   mounted() {
     this.getRandomArray();
     let bars = document.querySelectorAll(".bar");
@@ -97,7 +104,12 @@ export default {
       this.pseudoSections = document.querySelectorAll(
         ".pseudo-code-container p"
       );
-      visualizeBubbleSort(this.array, this.animationTime, this.arrFromNodeList);
+      visualizeBubbleSort(
+        this.array,
+        this.animationTime,
+        this.arrFromNodeList,
+        this.pseudoSections
+      );
     },
     runSelectionSort() {
       this.pseudoSections = document.querySelectorAll(
