@@ -2,10 +2,10 @@
   <div class="pseudo-code-container">
     <div class="checking">Let's Go !</div>
     <div class="pseudo-code">
-      <p class="indent-0 active">Lakukan</p>
+      <p class="indent-0">Lakukan</p>
       <p class="indent-1">swapped = false</p>
       <p class="indent-1">
-        untuk setiap elemen i sampai ke (array - 1) lakukan
+        untuk setiap elemen i = 0 sampai dengan (panjang array - 2) lakukan
       </p>
       <p class="indent-2">
         jika array ke i &#62; array ke (i + 1)

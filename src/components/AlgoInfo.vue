@@ -17,23 +17,40 @@
 <script>
 export default {
   data() {
-    let algoInfo = [
-      {
-        name: "selection",
-        infoList: [
-          "Selection sort merupakan teknik sorting yang paling sederhana",
-          "Algoritma ini tidak cocok untuk set data dengan jumlah besar karena kompleksitas dari algoritma ini adalah O(n^2) di mana n adalah jumlah item",
-          "hal pertama yang akan dilakukan algoritma selection sort adalah menemukan elemen terkecil dalam array kita dan menukarnya (swap) dengan elemen yang ada di posisi pertama, kemudian algoritma ini akan mengulangi hal yang sama lagi yaitu mencari elemen terkecil yang ada di dalam array dan kemudian menukarnya (swap) dengan elemen yang ada di posisi kedua (mengingat elemen di posisi pertama sudah berhasil kita sorting).",
-        ],
-      },
-    ];
     return {
-      selectedAlgo: algoInfo[0],
+      selectedAlgo: null,
       currIndex: 0,
       pauseInterval: false,
+      algoInfo: [
+        {
+          name: "selection",
+          infoList: [
+            "Selection sort merupakan salah satu teknik sorting yang paling lambat",
+            "Selection sort memiliki kompleksitas waktu O(n^2) dalam segala kasus",
+            "Hal pertama yang dilakukan selection sort adalah mencari nilai minimum dari bagian yang belum disortir lalu menukarnya dengan data pertama dari bagian yang belum disortir",
+          ],
+        },
+        {
+          name: "insertion",
+          infoList: [
+            "Insertion sort cukup baik digunakan pada data dengan skala kecil dan ketika data yang digunakan kebanyakan sudah terurut",
+            "Insertion sort memiliki komplesitas waktu O(n^2) dalam kasus terburuk dan O(n) dalam kasus terbaik",
+            "Ide dari insertion sort adalah seperti mengurutkan kartu, ambil satu data lalu bandingkan dengan data sebelumnya sampai data yang diambil lebih besar dari data sebelumnya. Lakukan hal tersebut pada setiap data pada array",
+          ],
+        },
+        {
+          name: "bubble",
+          infoList: [
+            "Bubble sort memiliki beberapa versi yang berbeda , namun idenya sama.",
+            "Versi bubble sort yang paling lambat memiliki kompleksitas waktu O(n^2) dalam setiap kasusnya. Namun ada versi lebih baik yang membuat algoritma ini memiliki kompleksitas waktu O(n) dalam kasus terbaik",
+            "Bubble sort mengurutkan data dengan cara membandingkan data dengan data setelahnya secara terus menerus sampai di satu iterasi dimana tidak terjadi perubahan",
+          ],
+        },
+      ],
     };
   },
   mounted() {
+    this.selectedAlgo = this.algoInfo[0];
     setTimeout(() => {
       setInterval(() => {
         if (!this.pauseInterval) {
@@ -45,6 +62,17 @@ export default {
         }
       }, 5000);
     }, 5000);
+
+    this.eventHub.$on("changeAlgo", (data) => {
+      let selectedAlgo = data.toLowerCase();
+      if (selectedAlgo == "selection") {
+        this.selectedAlgo = this.algoInfo[0];
+      } else if (selectedAlgo == "insertion") {
+        this.selectedAlgo = this.algoInfo[1];
+      } else if (selectedAlgo == "bubble") {
+        this.selectedAlgo = this.algoInfo[2];
+      }
+    });
   },
 };
 </script>
@@ -52,9 +80,12 @@ export default {
 <style scoped>
 .algo-info {
   position: relative;
+  padding: 1rem 0;
 }
 .algo-info:hover {
   cursor: default;
+  outline: 2px solid var(--soft-dark);
+  border-radius: 5px;
 }
 
 .algo-info:hover::before {

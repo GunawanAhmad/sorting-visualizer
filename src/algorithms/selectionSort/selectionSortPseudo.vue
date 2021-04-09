@@ -2,7 +2,7 @@
   <div class="pseudo-code-container">
     <div class="checking">Let's Go !</div>
     <div class="pseudo-code">
-      <p class="indent-0 active">untuk setiap elemen i dalam array lakukan</p>
+      <p class="indent-0">untuk setiap elemen i dalam array lakukan</p>
       <p class="indent-1">set nilai i sebagai minimum</p>
       <p class="indent-1">
         untuk setiap elemen j yg belum disortir lakukan

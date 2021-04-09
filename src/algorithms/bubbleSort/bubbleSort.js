@@ -3,7 +3,7 @@ export function bubbleSort(array) {
   const animation = [];
   do {
     swapped = false;
-    animation.push(createComparingObject(0, 0, false, true));
+    animation.push(createComparingObject(0, 1, false, true));
     for (let i = 0; i < array.length - 1; i++) {
       animation.push(createComparingObject(i, i + 1));
       if (array[i] > array[i + 1]) {

@@ -2,7 +2,7 @@
   <div class="pseudo-code-container">
     <div class="checking">Let's Go !</div>
     <div class="pseudo-code">
-      <p class="indent-0 active">set elemen pertama sebagai sorted</p>
+      <p class="indent-0">set elemen pertama sebagai sorted</p>
       <p class="indent-0">Untuk setiap elemen (i = 1) dalam array lakukan</p>
       <p class="indent-1">Set elemen ke i sebagai current</p>
       <p class="indent-1">

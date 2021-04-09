@@ -9,7 +9,7 @@
 
 .algo-info {
   /* border: 1px solid red; */
-  height: 100px;
+  min-height: 100px;
   margin-bottom: 2rem;
   max-width: 900px;
   width: auto;

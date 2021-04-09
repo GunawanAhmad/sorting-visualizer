@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="select-algo select">
+      <span class="tool-tip">Algoritma</span>
       <div class="box btn-style" @click="openAlgoList">
         <p>{{ selectAlgo }}</p>
         <div class="icon">
@@ -21,6 +22,7 @@
     </button>
 
     <div class="select-speed select">
+      <span class="tool-tip">Kecepatan animasi</span>
       <div class="box btn-style" @click="openSpeedList">
         <p>{{ selectedSpeed }}</p>
         <div class="icon">
