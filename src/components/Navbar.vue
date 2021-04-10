@@ -35,6 +35,19 @@
         <li @click="changeSelectedSpeed('Cepat')">Cepat</li>
       </ul>
     </div>
+    <div class="theme-toggler">
+      <input
+        type="checkbox"
+        class="checkbox"
+        id="checkbox"
+        v-model="isDarkTheme"
+      />
+      <label for="checkbox" class="label" @click="changeTheme">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="ball"></div>
+      </label>
+    </div>
   </nav>
 </template>
 
@@ -46,6 +59,7 @@ export default {
       isShowingAlgoList: false,
       selectedSpeed: "Cepat",
       isShowingSpeedList: false,
+      isDarkTheme: true,
     };
   },
   computed: {
@@ -79,6 +93,19 @@ export default {
     },
     randomizeArray() {
       this.eventHub.$emit("randomize", null);
+    },
+    changeTheme() {
+      let root = document.querySelector(":root");
+      // let rs = getComputedStyle(r);
+      if (this.isDarkTheme) {
+        root.style.setProperty("--dark", "#eeeeee");
+        root.style.setProperty("--white", "#36393e");
+        root.style.setProperty("--soft-dark", "#E1E1E1");
+      } else {
+        root.style.setProperty("--dark", "#36393e");
+        root.style.setProperty("--white", "#eeeeee");
+        root.style.setProperty("--soft-dark", "#4f5153");
+      }
     },
   },
 };

@@ -7,6 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  /* flex: auto; */
 }
 
 .navbar > * {
@@ -19,12 +21,12 @@
 
 .visualize-btn {
   background: var(--blue) !important;
-  color: var(--white) !important;
+  color: #eeeeee !important;
 }
 
 .randomize-btn {
   background: var(--orange) !important;
-  color: var(--white) !important;
+  color: #eeeeee !important;
 }
 
 button:disabled {
@@ -54,6 +56,7 @@ button:disabled {
   font-size: 1.2rem;
   opacity: 0;
   transition: all 250ms ease;
+  pointer-events: none;
 }
 
 .select-speed .tool-tip {
@@ -137,4 +140,52 @@ button:disabled {
   border-radius: 5px;
   border: none;
   cursor: pointer;
+}
+
+.theme-toggler {
+  /* margin-left: auto; */
+  position: absolute;
+  right: 3rem;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  height: 23px;
+  width: 40px;
+  background-color: #36393e;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+  display: flex;
+  border-radius: 50px;
+  position: relative;
+  transform: scale(1.5);
+  padding: 0px !important;
+  margin-right: auto !important;
+  font-size: 1.2rem;
+}
+.ball {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+.checkbox:checked + .label .ball {
+  transform: translateX(18px);
+}
+
+.fa-moon {
+  color: #e9c46a;
+}
+
+.fa-sun {
+  color: #e9c46a;
 }
