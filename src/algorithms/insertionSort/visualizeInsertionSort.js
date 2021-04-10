@@ -1,5 +1,9 @@
 import { insertionSort } from "./insertionSort";
-import { changeBackgroundColor, swapBars } from "../../Helper/Helper";
+import {
+  changeBackgroundColor,
+  swapBars,
+  disableButton,
+} from "../../Helper/Helper";
 
 export function visualizeInsertionSort(
   array,
@@ -14,7 +18,11 @@ export function visualizeInsertionSort(
   let sortedColor = "#2a9d8f";
 
   for (let i = 0; i < sortedArr.length; i++) {
+    disableButton(true);
     setTimeout(() => {
+      if (i === sortedArr.length - 1) {
+        disableButton(false);
+      }
       visualizePseudo(sortedArr[i], pseudoSections);
       checkPseudoAnim(sortedArr[i], arrFromNodeList);
       changeBackgroundColor(

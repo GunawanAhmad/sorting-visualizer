@@ -30,6 +30,7 @@
 
 .pseudo-code-container {
   width: 30%;
+  min-width: 500px;
   /* max-height: 200px; */
   /* border: 1px solid red; */
   color: var(--white);
